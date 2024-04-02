@@ -21,19 +21,8 @@ public class UserDao implements IUserDao {
         this.userRepository = userRepository;
     }
 
-    public void initializeUserData() {
-
-        userRepository.save(UserEntity.builder()
-                .email("nevin.sunny@gmail.com")
-                .firstName("Nevin")
-                .lastName("Sunny")
-                .build());
-
-        userRepository.save(UserEntity.builder()
-                .email("user.one@gmail.com")
-                .firstName("User")
-                .lastName("One")
-                .build());
-
+    @Override
+    public UserEntity save(UserEntity userEntity) {
+        return userRepository.save(userEntity);
     }
 }

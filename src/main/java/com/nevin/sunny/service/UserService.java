@@ -17,7 +17,5 @@ public class UserService {
         this.userDao = userDao;
     }
 
-    public void initliseUserData(){
-        userDao.initializeUserData();
-    }
+
 }

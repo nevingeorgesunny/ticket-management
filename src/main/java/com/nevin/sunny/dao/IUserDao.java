@@ -1,5 +1,7 @@
 package com.nevin.sunny.dao;
 
+import com.nevin.sunny.pojo.entities.postgress.UserEntity;
+
 /**
  * @author nevinsunny
  * date 02/04/24
@@ -7,5 +9,5 @@ package com.nevin.sunny.dao;
  */
 public interface IUserDao {
 
-    void initializeUserData();
+    UserEntity save(UserEntity userEntity);
 }
