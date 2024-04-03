@@ -203,6 +203,7 @@ public class TicketService implements ITicketService {
                         .map(s -> SeatContext.builder()
                                 .isTaken(s.getIsTaken())
                                 .seatId(s.getSeatId())
+                                .seatNumber(s.getSeatNumber())
                                 .userInfo(s.getIsTaken() ? UserContext.builder()
                                         .userId(s.getUserId())
                                         .firstName(s.getFirstName())
