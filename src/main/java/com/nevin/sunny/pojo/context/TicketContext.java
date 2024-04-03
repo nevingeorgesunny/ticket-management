@@ -23,4 +23,6 @@ public class TicketContext {
     private UUID ticketId;
     private String section;
     private Integer seatNumber;
+    private Integer amountPaid;
+
 }

@@ -111,6 +111,7 @@ public class TicketService implements ITicketService {
                             .ticketId(ticket.getId())
                             .section(seat.getSection())
                             .seatNumber(seat.getSeatNumber())
+                            .amountPaid(ticket.getPricePaid())
                             .build();
                 }).collect(Collectors.toList()))
                 .build();
@@ -200,17 +201,17 @@ public class TicketService implements ITicketService {
         return FetchAllSectionResponse.builder()
                 .seats(allBySection.stream()
                         .map(s -> SeatContext.builder()
-                        .isTaken(s.getIsTaken())
-                        .seatId(s.getSeatId())
-                        .userInfo(s.getIsTaken() ? UserContext.builder()
-                                .userId(s.getUserId())
-                                .firstName(s.getFirstName())
-                                .lastName(s.getLastName())
-                                .email(s.getEmail())
-                                .build() : null)
-                        .ticketId(s.getIsTaken() ? s.getTicketId() : null)
-                        .section(s.getSection())
-                        .build()).collect(Collectors.toList()))
+                                .isTaken(s.getIsTaken())
+                                .seatId(s.getSeatId())
+                                .userInfo(s.getIsTaken() ? UserContext.builder()
+                                        .userId(s.getUserId())
+                                        .firstName(s.getFirstName())
+                                        .lastName(s.getLastName())
+                                        .email(s.getEmail())
+                                        .build() : null)
+                                .ticketId(s.getIsTaken() ? s.getTicketId() : null)
+                                .section(s.getSection())
+                                .build()).collect(Collectors.toList()))
                 .build();
 
     }

@@ -25,7 +25,6 @@ public class FetchTicketReceiptResponse {
     private UUID userId;
     private String from;
     private String  to;
-    private Integer amountPaid;
 
     private List<TicketContext> ticketList;
 
