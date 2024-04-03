@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "f0142c8c-982c-4de3-bfd2-7f75a0aad3e7",
+		"name": "Nevin Sunny Ticket Managment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18302960",
+		"_collection_link": "https://lunar-escape-666465.postman.co/workspace/learning-service~235202d9-1f27-4e5d-b2a0-8f7978f90e7e/collection/18302960-f0142c8c-982c-4de3-bfd2-7f75a0aad3e7?action=share&source=collection_link&creator=18302960"
+	},
+	"item": [
+		{
+			"name": "health-check",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/api/v1/health-check",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"health-check"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "book-ticket",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\":\"b8eafa52-b4bd-45d7-ab6f-f60105b8c24b\",\n    \"pricePaid\":123,\n    \"from\":\"London\",\n    \"to\":\"France\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/book-ticket",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"book-ticket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-tickets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/ticket/:userId",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"ticket",
+						":userId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "b8eafa52-b4bd-45d7-ab6f-f60105b8c24b"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "fetch-all-section-ticket",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/fetch/:section",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"fetch",
+						":section"
+					],
+					"variable": [
+						{
+							"key": "section",
+							"value": "A"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update-ticket-value",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\":\"b8eafa52-b4bd-45d7-ab6f-f60105b8c24b\",\n    \"ticketId\":\"eb5438b8-903a-41ea-b722-99dfe3375823\",\n    \"isEnabled\":false,\n    \"newSection\":\"B\",\n    \"newSeatNumber\":4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/ticket/:ticketId",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"ticket",
+						":ticketId"
+					],
+					"variable": [
+						{
+							"key": "ticketId",
+							"value": "ddb91223-481d-4230-a05a-5b2b5cf0f35e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-user-ticket",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/ticket/:userId",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"ticket",
+						":userId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "b8eafa52-b4bd-45d7-ab6f-f60105b8c24b"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
