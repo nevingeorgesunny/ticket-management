@@ -1,17 +1,17 @@
-package com.nevin.sunny.pojo.response;
+package com.nevin.sunny.pojo.communicators.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.nevin.sunny.pojo.context.SeatContext;
 import lombok.*;
-import org.springframework.http.HttpStatus;
+
+import java.util.List;
 
 /**
  * @author nevinsunny
- * date 23/03/24
- * time 4:39 pm
+ * date 03/04/24
+ * time 9:52 am
  */
-
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Getter
@@ -20,8 +20,6 @@ import org.springframework.http.HttpStatus;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BaseResponse {
-    private Object data;
-    private String message;
-    private HttpStatus code;
+public class FetchAllSectionResponse {
+    List<SeatContext> seats;
 }

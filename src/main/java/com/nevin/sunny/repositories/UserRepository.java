@@ -3,6 +3,7 @@ package com.nevin.sunny.repositories;
 import com.nevin.sunny.pojo.entities.postgress.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -11,4 +12,6 @@ import java.util.UUID;
  * time 5:24 pm
  */
 public interface UserRepository extends JpaRepository<UserEntity, UUID> {
+
+    Optional<UserEntity> findByEmail(String email);
 }

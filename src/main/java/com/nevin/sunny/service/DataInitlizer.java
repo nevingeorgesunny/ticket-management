@@ -60,6 +60,7 @@ public class DataInitlizer implements ApplicationRunner {
                         .seatNumber(1)
                         .isTaken(false)
                         .build(),
+
                 SeatEntity.builder()
                         .section(SECTION_A)
                         .seatNumber(2)
@@ -101,7 +102,7 @@ public class DataInitlizer implements ApplicationRunner {
                         .build()
         );
 
-        seatDao.save(seats);
+        seatDao.saveAll(seats);
 
         log.info("Seat data created");
 

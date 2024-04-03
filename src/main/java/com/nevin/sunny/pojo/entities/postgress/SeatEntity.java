@@ -35,7 +35,5 @@ public class SeatEntity {
     @Column(name = "is_taken", nullable = false)
     private Boolean isTaken = false;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id", nullable = false)
-    private TicketEntity ticket;
+
 }

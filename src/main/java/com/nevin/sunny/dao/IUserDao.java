@@ -1,6 +1,10 @@
 package com.nevin.sunny.dao;
 
+import com.nevin.sunny.exception.TicketException;
 import com.nevin.sunny.pojo.entities.postgress.UserEntity;
+
+import java.util.Optional;
+import java.util.UUID;
 
 /**
  * @author nevinsunny
@@ -10,4 +14,8 @@ import com.nevin.sunny.pojo.entities.postgress.UserEntity;
 public interface IUserDao {
 
     UserEntity save(UserEntity userEntity);
+
+    UserEntity findById(UUID userId) throws TicketException;
+
+    Optional<UserEntity> findByEmail(String email) throws TicketException;
 }

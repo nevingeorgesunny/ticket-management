@@ -13,6 +13,7 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "ticket")
@@ -22,9 +23,8 @@ public class TicketEntity {
     @Column(name = "id", nullable = false, updatable = false)
     private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private UserEntity user;
+    @Column(name = "user_id", nullable = false)
+    private UUID userId;
 
     @Column(name = "from_location", nullable = false)
     private String from;
@@ -33,9 +33,12 @@ public class TicketEntity {
     private String to;
 
     @Column(name = "price_paid", nullable = false)
-    private Double pricePaid;
+    private Integer pricePaid;
 
-    @Column(name = "seat_section", nullable = false)
-    private String seatSection;
+    @Column(name = "seat_id", nullable = false)
+    private Long seatId;
+
+    @Column(name = "is_enabled", nullable = false)
+    private Boolean isEnabled;
 
 }

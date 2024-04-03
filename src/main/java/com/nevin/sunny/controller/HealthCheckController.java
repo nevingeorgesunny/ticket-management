@@ -1,6 +1,6 @@
 package com.nevin.sunny.controller;
 
-import com.nevin.sunny.pojo.response.BaseResponse;
+import com.nevin.sunny.pojo.communicators.response.BaseResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HealthCheckController {
 
     @GetMapping("/health-check")
-    public ResponseEntity<BaseResponse> getMyResponse() {
+    public ResponseEntity<BaseResponse> healthCheck() {
         return ResponseEntity.ok(BaseResponse.builder()
                 .data("Success")
                 .code(HttpStatus.OK)
