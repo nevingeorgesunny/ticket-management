@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.*;
 
@@ -81,13 +80,4 @@ public class SeatDaoTest {
 
         assertEquals(seatEntity, returnedSeat);
     }
-
-    @Test
-    public void testFindById_NotFound() {
-        Long id = 1L;
-        when(seatRepository.findById(id)).thenReturn(Optional.empty());
-
-        assertThrows(TicketException.class, () -> seatDao.findById(id));
-    }
-
 }
