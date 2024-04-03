@@ -82,6 +82,8 @@ public class TicketService implements ITicketService {
 
         return BookTicketResponse.builder()
                 .userId(userEntity.getId())
+                .seatNumber(seatEntity.getSeatNumber())
+                .section(seatEntity.getSection())
                 .ticketId(ticketEntity.getId())
                 .from(ticketEntity.getFrom())
                 .to(ticketEntity.getTo())
@@ -129,6 +131,7 @@ public class TicketService implements ITicketService {
                         )
                 );
             }
+
             userEntity = userDao.save(UserEntity.builder()
                     .id(UUID.randomUUID())
                     .lastName(request.getUserInfo().getLastName())
@@ -146,7 +149,6 @@ public class TicketService implements ITicketService {
     public Boolean updateTicket(UpdateTicketRequest request) throws TicketException {
         TicketEntity ticketEntity = ticketDao.findById(request.getTicketId());
         SeatEntity bookedSeat = seatDao.findById(ticketEntity.getSeatId());
-
 
         if (Boolean.FALSE.equals(request.getIsEnabled())) {
             log.info("Deleting ticket with Id : {}", request.getTicketId());
@@ -203,11 +205,12 @@ public class TicketService implements ITicketService {
                         .isTaken(s.getIsTaken())
                         .seatId(s.getSeatId())
                         .userInfo(s.getIsTaken() ? UserContext.builder()
+                                .userId(s.getUserId())
                                 .firstName(s.getFirstName())
                                 .lastName(s.getLastName())
                                 .email(s.getEmail())
                                 .build() : null)
-                        .ticketId(s.getTicketId())
+                        .ticketId(s.getIsTaken() ? s.getTicketId(): null)
                         .section(s.getSection())
                         .build()).collect(Collectors.toList()))
                 .build();

@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
+import java.util.UUID;
+
 /**
  * @author nevinsunny
  * date 03/04/24
@@ -19,6 +21,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserContext {
+    private UUID userId;
     private String firstName;
     private String lastName;
     private String email;

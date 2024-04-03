@@ -26,4 +26,6 @@ public class BookTicketResponse {
     private String to;
     private Integer pricePaid;
     private UUID ticketId;
+    private String section;
+    private Integer seatNumber;
 }
