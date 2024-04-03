@@ -56,7 +56,7 @@ public class SeatDao implements ISeatDao {
 
     @Override
     public SeatEntity findBySeatNumberAndSection(Integer seatNumber, String section) throws TicketException {
-        return seatRepository.findBySeatNumberAndSection(seatNumber,section).orElseThrow(() -> new TicketException(
+        return seatRepository.findBySeatNumberAndSectionAndIsTakenFalse(seatNumber,section).orElseThrow(() -> new TicketException(
                 String.format("No ticket with seat number : %s and section : %s ", seatNumber,seatNumber)
         ));
     }

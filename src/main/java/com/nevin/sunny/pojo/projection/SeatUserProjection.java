@@ -10,6 +10,7 @@ import java.util.UUID;
 public interface SeatUserProjection {
     Long getSeatId();
     String getSection();
+    Boolean getIsEnabled();
     Integer getSeatNumber();
     Boolean getIsTaken();
 

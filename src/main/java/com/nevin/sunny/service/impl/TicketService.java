@@ -154,10 +154,9 @@ public class TicketService implements ITicketService {
             log.info("Deleting ticket with Id : {}", request.getTicketId());
 
             bookedSeat.setIsTaken(false);
-            ticketEntity.setIsEnabled(false);
 
             seatDao.saveAll(List.of(bookedSeat));
-            ticketDao.save(ticketEntity);
+            ticketDao.deleteAll(List.of(ticketEntity));
         } else {
             log.info("Updating ticket with : {}", request);
             SeatEntity newSeat = seatDao
@@ -189,9 +188,7 @@ public class TicketService implements ITicketService {
 
         seatDao.saveAll(seats);
 
-        tickets.forEach(t -> t.setIsEnabled(false));
-
-        ticketDao.saveAll(tickets);
+        ticketDao.deleteAll(tickets);
 
         return true;
     }
@@ -201,7 +198,8 @@ public class TicketService implements ITicketService {
         List<SeatUserProjection> allBySection = seatDao.findAllBySection(section);
 
         return FetchAllSectionResponse.builder()
-                .seats(allBySection.stream().map(s -> SeatContext.builder()
+                .seats(allBySection.stream()
+                        .map(s -> SeatContext.builder()
                         .isTaken(s.getIsTaken())
                         .seatId(s.getSeatId())
                         .userInfo(s.getIsTaken() ? UserContext.builder()
@@ -210,7 +208,7 @@ public class TicketService implements ITicketService {
                                 .lastName(s.getLastName())
                                 .email(s.getEmail())
                                 .build() : null)
-                        .ticketId(s.getIsTaken() ? s.getTicketId(): null)
+                        .ticketId(s.getIsTaken() ? s.getTicketId() : null)
                         .section(s.getSection())
                         .build()).collect(Collectors.toList()))
                 .build();

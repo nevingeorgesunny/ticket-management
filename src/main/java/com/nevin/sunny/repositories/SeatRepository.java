@@ -20,12 +20,12 @@ public interface SeatRepository extends JpaRepository<SeatEntity, Long> {
 
     List<SeatEntity> findAllBySection(String section);
 
-    @Query(value = "SELECT s.seatId as seatId , s.seatNumber as seatNumber, s.section as section, s.isTaken as isTaken " +
+    @Query(value = "SELECT s.seatId as seatId , s.seatNumber as seatNumber, s.section as section, s.isTaken as isTaken , t.isEnabled as IsEnabled" +
             " ,t.id as ticketId , u.email as email , u.firstName as firstName , u.lastName as lastName , u.id as userId  FROM SeatEntity s " +
             " LEFT JOIN TicketEntity t ON t.seatId = s.seatId" +
             " LEFT JOIN UserEntity u on u.id = t.userId" +
-            " WHERE s.section = ?1 AND (t.isEnabled IS NULL OR t.isEnabled = true)")
+            " WHERE s.section = ?1 ")
     List<SeatUserProjection> findAllTicketAndUserBySection(String sectionName);
 
-    Optional<SeatEntity> findBySeatNumberAndSection(Integer seatNumber,String section);
+    Optional<SeatEntity> findBySeatNumberAndSectionAndIsTakenFalse(Integer seatNumber,String section);
 }

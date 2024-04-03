@@ -33,6 +33,11 @@ public class TicketDao implements ITicketDao {
     }
 
     @Override
+    public void deleteAll(List<TicketEntity> ticketEntities) {
+        ticketRepository.deleteAll(ticketEntities);
+    }
+
+    @Override
     public List<TicketEntity> findAllTicketsForUser(UUID userId) {
         return ticketRepository.findAllByUserIdAndIsEnabledTrue(userId);
     }

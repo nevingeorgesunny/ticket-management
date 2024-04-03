@@ -164,7 +164,7 @@ public class TicketServiceTest {
 
         assertTrue(result);
         verify(seatDao, times(1)).saveAll(anyList());
-        verify(ticketDao, times(1)).save(any(TicketEntity.class));
+        verify(ticketDao, times(1)).deleteAll(anyList());
     }
 
     @Test
@@ -205,7 +205,7 @@ public class TicketServiceTest {
         verify(ticketDao, times(1)).findAllTicketsForUser(userId);
         verify(seatDao, times(1)).findAllById(anyList());
         verify(seatDao, times(1)).saveAll(anyList());
-        verify(ticketDao, times(1)).saveAll(anyList());
+        verify(ticketDao, times(1)).deleteAll(anyList());
     }
 
     @Test
@@ -235,6 +235,12 @@ public class TicketServiceTest {
             public String getSection() {
                 return "A";
             }
+
+            @Override
+            public Boolean getIsEnabled() {
+                return true;
+            }
+
 
             @Override
             public Integer getSeatNumber() {

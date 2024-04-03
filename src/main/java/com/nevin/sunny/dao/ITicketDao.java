@@ -16,6 +16,8 @@ public interface ITicketDao {
 
     List<TicketEntity> saveAll(List<TicketEntity> ticketEntities);
 
+    void deleteAll(List<TicketEntity> ticketEntities);
+
     List<TicketEntity> findAllTicketsForUser(UUID userId);
 
     TicketEntity findById(UUID ticketId) throws TicketException;
